@@ -63,7 +63,7 @@ export function Logo({ className }: Props) {
         fill="#2FB86E"
       />
     </svg>
-)
+  );
 }
 
 
