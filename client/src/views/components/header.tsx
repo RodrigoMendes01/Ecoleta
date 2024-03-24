@@ -3,7 +3,7 @@ import { Logo } from '../../assets/logo';
 import { EnterIcon } from '@radix-ui/react-icons';
 import { UserModal } from './user-modal';
 
-const userLogged = true;
+const userLogged = false;
 
 export function Header() {
   return (
@@ -23,7 +23,7 @@ export function Header() {
           <UserModal/>
         ) : (
           <Link to="/login">
-            <EnterIcon className='w-6 h-6 hover:text-green-600 transition-all'/>
+            <EnterIcon className='w-6 h-6 text-green-400 hover:text-green-600 transition-all'/>
           </Link>
         )}
       </div>
