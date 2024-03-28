@@ -1,6 +1,6 @@
 import { GitHubLogoIcon, LinkedInLogoIcon, MagnifyingGlassIcon } from '@radix-ui/react-icons';
-import { HomeBackground } from '../../../assets/home-background';
-import { Header } from '../../components/header';
+import { HomeBackground } from '@assets/home-background';
+import { Header } from '@components/header';
 import { Link } from 'react-router-dom';
 
 export function Home () {

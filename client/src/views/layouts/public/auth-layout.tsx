@@ -10,7 +10,7 @@ export function AuthLayout() {
           <Logo className='w-24 h-24'/>
         </div>
 
-        <div>
+        <div className='bg-white rounded-lg py-6 px-12 flex items-center flex-col min-w-[450px]'>
           <Outlet/>
         </div>
       </div>
