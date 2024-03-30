@@ -2,6 +2,8 @@ import z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodStringParser } from '../../../../app/utils/custom-zod-error';
 import { useState } from 'react';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { httpClient } from '../../../../app/services/http-client';
 
 export function useLoginController() {
   const [loading, setLoading] = useState(false);
@@ -16,16 +18,26 @@ export function useLoginController() {
   const {
     register,
     formState: {errors},
-    control,
-    handleSubmit: hookFormHandleSubmit
+    handleSubmit: hookFormSubmit
   } = useForm<FormData>({
     resolver: zodResolver(schema)
+  });
+
+
+  const handleSubmit = hookFormSubmit(async (data) => {
+    setLoading(true);
+    try {
+
+    } catch (error) {
+
+    } finally {
+      setLoading(false);
+    }
   });
 
   return {
     errors,
     register,
-    control,
     handleSubmit,
     loading
   };

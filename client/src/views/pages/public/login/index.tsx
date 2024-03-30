@@ -3,6 +3,7 @@ import { Input } from '@components/input';
 import { useState } from 'react';
 import { EyeClosedIcon, EyeOpenIcon } from '@radix-ui/react-icons';
 import { Button } from '@components/button';
+import { useLoginController } from './use-login-controller';
 
 export function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState<'password' | 'text'>('password');
@@ -12,6 +13,8 @@ export function Login() {
       prev === 'password' ? 'text' : 'password',
     );
   };
+
+  const { errors, handleSubmit, loading, register } = useLoginController();
 
   return (
     <>
@@ -25,22 +28,22 @@ export function Login() {
       </header>
 
       <form action=""
-        className='mt-6 w-full flex flex-col gap-4'
-        onSubmit={() => {}}
+        className='mt-6 w-full flex flex-col gap-6'
+        onSubmit={handleSubmit}
       >
         <Input
           type='email'
           placeholder='E-mail'
-          //{...register('email')}
-          error={'errors.email?.message'}
+          {...register('email')}
+          error={errors.email?.message}
         />
 
         <div className='relative'>
           <Input
             type={isPasswordVisible}
             placeholder='Senha'
-            //{...register('email')}
-            error={'errors.email?.message'}
+            {...register('password')}
+            error={errors.password?.message}
           />
 
           <button
@@ -58,7 +61,7 @@ export function Login() {
         <Button
           type='submit'
           className='mt-4'
-          isLoading={false}
+          isLoading={loading}
         >
           Entrar
         </Button>
